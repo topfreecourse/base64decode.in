@@ -27,6 +27,16 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/encoding-japanese@2.0.0/encoding.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/encoding-japanese@2.0.0/encoding.min.js"></script>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-QB7TWGK7MG"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-QB7TWGK7MG');
+	</script>
 
   <style>
     body { background-color: #f0f8ff; }
@@ -38,12 +48,74 @@
     textarea { resize: vertical; min-height: 150px; }
     .form-check-label { font-weight: 500; }
   </style>
+ 
+  <style>
+    body {
+      background-color: #f0f8ff;
+    }
+    .header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 1rem 0;
+    }
+    .main-card {
+      background: #fff;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .footer {
+      background-color: #e3f2fd;
+      color: #333;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    .footer a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    .form-check-label {
+      font-weight: 500;
+    }
+  </style>
+  <style>
+/* Custom color buttons */
+.encode-btn {
+  background-color: #20c997; /* Teal */
+  border: 1px solid #20c997;
+  transition: all 0.3s ease;
+}
+.encode-btn:hover {
+  background-color: #17b58a;
+  border-color: #17b58a;
+  text-decoration: none;
+}
+
+/* Inactive style with subtle hover */
+.decode-btn {
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+.decode-btn:hover {
+  background-color: #e9ecef;
+  text-decoration: none;
+}
+</style>
 </head>
 <body>
 
 <header class="header text-center">
   <div class="container">
-    <a href="index.html" class="nav-link">
+    <a href=" https://www.base64decode.in" class="nav-link">
       <h1 class="h3 mb-0"><img src="logo.png" alt="Base64Decode Logo" width="100" height="100" class="mb-2">Base64Decode</h1>
     </a>
   </div>
@@ -51,7 +123,31 @@
 
 <main class="container py-5">
   <div class="row justify-content-center">
+    <div class="col-lg-2">
+
+		</div>
+
     <div class="col-lg-8">
+      <div class="p-1 rounded-3 shadow-sm bg-light border">
+        <div class="row g-2">
+          <div class="col-12">
+            <!-- Active button -->
+            <a href="https://www.base64encode.tech/"
+            class="btn w-100 py-2 fw-semibold  decode-btn"
+            target="_self" rel="noopener noreferrer">
+            Base64 Encode Tool
+            </a>
+          </div>
+          <div class="col-12">
+            <!-- Inactive button -->
+            <a href="https://www.base64decode.in/"
+            class="btn w-100 py-2 fw-semibold text-white encode-btn"
+            target="_self" rel="noopener noreferrer">
+            Base64 Decode Tool
+            </a>
+          </div>
+        </div>
+      </div>
       <div class="main-card">
 
         <!-- TEXT DECODE SECTION -->
@@ -170,8 +266,11 @@
           </div>
         </div>
 
-      </div>
+      </div>      
     </div>
+    <div class="col-lg-2">
+
+		  </div>
   </div>
 </main>
 
