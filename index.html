@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base64 Decode Online - Fast & Secure Decoding Tool | Base64Decode.in</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="theme-color" content="#007bff">
+<!-- Windows Tile -->
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#007bff">
+
+
+  <meta name="description" content="Base64Decode.in is a free, fast, and secure tool to decode Base64-encoded text or files. Supports UTF-8, URL-safe decoding, live mode, and charset conversion.">
+  <meta name="keywords" content="Base64 decode, Base64 decoder, decode Base64 online, base64url, file to text, base64 to JSON, decode MIME, base64 decode tool">
+  <meta name="author" content="Base64Decode.in">
+  <link rel="canonical" href="https://base64decode.in/" />
+  <meta property="og:title" content="Base64 Decode Online - Free Base64 to Text Tool" />
+  <meta property="og:description" content="Decode Base64 text or files to readable format with line-by-line decoding, charset options, and URL-safe support.">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://base64decode.in/" />
+  <meta property="og:image" content="https://base64decode.in/logo.png" />
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/encoding-japanese@2.0.0/encoding.min.js"></script>
+
+  <style>
+    body { background-color: #f0f8ff; }
+    .header { background-color: #0d6efd; color: white; padding: 1rem 0; }
+    .main-card { background: #fff; border-radius: 0.5rem; padding: 2rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+    .footer { background-color: #e3f2fd; color: #333; padding: 2rem 0; margin-top: 2rem; }
+    .footer a { color: #0d6efd; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    textarea { resize: vertical; min-height: 150px; }
+    .form-check-label { font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<header class="header text-center">
+  <div class="container">
+    <a href="index.html" class="nav-link">
+      <h1 class="h3 mb-0"><img src="logo.png" alt="Base64Decode Logo" width="100" height="100" class="mb-2">Base64Decode</h1>
+    </a>
+  </div>
+</header>
+
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="main-card">
+
+        <!-- TEXT DECODE SECTION -->
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">A. Decode From Base64 Text</div>
+          <div class="card-body">
+            <textarea id="decodeInput" class="form-control mb-2" rows="6" placeholder="Paste Base64-encoded text..."></textarea>
+            <div id="decodeJsonStatus" class="form-text text-success">Waiting for input...</div>
+
+            <label class="form-label mt-3">Character Set</label>
+            <select class="form-select mb-3" id="decodeCharsetText"></select>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Newline Separator</label>
+                <select class="form-select" id="newlineOption">
+                  <option value="LF">Unix-LF</option>
+                  <option value="CRLF">Windows-CRLF</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Live Mode</label><br>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="liveMode" onchange="toggleLiveMode()">
+                  <label class="form-check-label" for="liveMode">
+                    Decodes in real-time as you type (UTF-8 only)
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="decodeEachLine">
+              <label class="form-check-label" for="decodeEachLine">Decode each line separately</label>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="urlSafe">
+              <label class="form-check-label" for="urlSafe">Decode as URL-safe Base64 (Base64URL)</label>
+            </div>
+
+            <button id="decodeBtnText" class="btn btn-primary me-2" onclick="decodeFromText()">Decode</button>
+			
+
+            </br><label class="form-label mt-4">Decoded Output</label>
+            <textarea id="decodeOutputText" class="form-control" rows="6" readonly></textarea>
+            <div class="row">
+              <div class="col-md-2 mt-2">
+                <button class="btn btn-secondary me-2" onclick="copyOutput('decodeOutputText')">Copy</button>
+              </div>
+              <div class="col-md-6 mt-2">
+                <button class="btn btn-success me-2" onclick="downloadOutput('decodeOutputText','txt')">Download Decoded File</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILE DECODE SECTION -->
+        <div class="card mt-4">
+          <div class="card-header bg-success text-white">B. Decode from File Upload</div>
+          <div class="card-body">
+            <input type="file" class="form-control mb-3" id="decodeFile">
+            <label class="form-label">Character Set</label>
+            <select class="form-select mb-3" id="decodeCharsetFile"></select>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Newline Separator</label>
+                <select class="form-select" id="newlineOptionFile">
+                  <option value="LF">Unix-LF</option>
+                  <option value="CRLF">Windows-CRLF</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="decodeEachLineFile">
+              <label class="form-check-label" for="decodeEachLineFile">Decode each line separately</label>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="urlSafeFile">
+              <label class="form-check-label" for="urlSafeFile">Decode as URL-safe Base64 (Base64URL)</label>
+            </div>
+
+            <button class="btn btn-primary me-2" onclick="decodeFromFile()">Decode</button>
+           </br> <label class="form-label mt-4">Decoded Output</label>
+            <textarea id="decodeOutputFile" class="form-control" rows="6" readonly></textarea>
+            <div class="row">
+              <div class="col-md-2 mt-2">
+                <button class="btn btn-secondary me-2" onclick="copyOutput('decodeOutputFile')">Copy</button>
+              </div>
+              <div class="col-md-6 mt-2">
+                <button class="btn btn-success me-2" onclick="downloadOutput('decodeOutputFile','txt')">Download Decoded File</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <div class="card mt-4">
+          <div class="card-body">
+            <h1 class="mb-4">About Base64Decode.in</h1>
+            <p><strong>Base64Decode.in</strong> is a powerful and free web tool that converts Base64-encoded data back into readable text or files. Use it to decode strings, JSON, or even Base64-formatted files with full control over character set and formatting.</p>
+            <p>Base64 decoding helps restore original binary/text content from encoded data. It's commonly used in APIs, email systems, embedded images, and secure file transfers.</p>
+
+            <h5>Key Features</h5>
+            <ul>
+              <li><strong>Live Decoding:</strong> Decode text in real-time as you type (UTF-8 only)</li>
+              <li><strong>URL-safe Support:</strong> Decode Base64URL using "-" and "_" with or without padding</li>
+              <li><strong>Line-by-Line Decoding:</strong> Decode one line at a time for structured data</li>
+              <li><strong>Charset Options:</strong> Automatically convert decoded bytes to your selected character set</li>
+              <li><strong>Secure & Instant:</strong> Everything runs in your browser — no data is sent to any server</li>
+            </ul>
+            <p><em>Note: Chunk-splitting is only used for encoding and is not applicable in decoding mode.</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer text-center">
+  <div class="container">
+    <p class="mb-2">&copy; 2025 base64decode.in All rights reserved.</p>
+    <div class="d-flex justify-content-center flex-wrap gap-4">
+      <a href="privacyPolicy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

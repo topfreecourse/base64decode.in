@@ -1,0 +1,62 @@
+/* Status message styling */
+#decodeJsonStatus {
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#decodeJsonStatus.success {
+  color: #28a745 !important; /* Green */
+}
+
+#decodeJsonStatus.invalid {
+  color: red !important;
+}
+
+/* Input & output area styling */
+textarea.form-control {
+  min-height: 120px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Charset dropdown & controls */
+select.form-select,
+input[type="checkbox"] {
+  margin-bottom: 8px;
+}
+
+/* Button spacing */
+button.btn {
+  margin: 4px 4px 4px 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+/* File upload box */
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+/* Footer small text */
+footer small {
+  font-size: 0.85rem;
+  color: #777;
+}
