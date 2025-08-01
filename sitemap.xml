@@ -3,37 +3,37 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc> https://www.base64decode.in/</loc>
+    <loc>https://www.base64decode.in/</loc>
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc> https://www.base64decode.in/ https://www.base64decode.in</loc>
+    <loc>https://www.base64decode.in/https://www.base64decode.in</loc>
     <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc> https://www.base64decode.in/privacyPolicy.html</loc>
+    <loc>https://www.base64decode.in/privacyPolicy.html</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc> https://www.base64decode.in/terms.html</loc>
+    <loc>https://www.base64decode.in/terms.html</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc> https://www.base64decode.in/contact.html</loc>
+    <loc>https://www.base64decode.in/contact.html</loc>
     <priority>0.70</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc> https://www.base64decode.in/about.html</loc>
+    <loc>https://www.base64decode.in/about.html</loc>
     <priority>0.70</priority>
     <changefreq>monthly</changefreq>
   </url>
