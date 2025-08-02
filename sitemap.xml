@@ -7,13 +7,6 @@
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
-
-  <url>
-    <loc>https://www.base64decode.in/https://www.base64decode.in</loc>
-    <priority>0.90</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
   <url>
     <loc>https://www.base64decode.in/privacyPolicy.html</loc>
     <priority>0.80</priority>
